@@ -1,7 +1,7 @@
 from django.db import models
 from user.models import User
 
-# Create your models here.
+
 class Post(models.Model):
     image = models.CharField(max_length=500)
     title = models.CharField(max_length=200)
