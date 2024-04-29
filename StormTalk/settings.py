@@ -24,7 +24,8 @@ INSTALLED_APPS = [
     'message',
     'post',
     'user',
-    'subscribe'
+    'subscribe',
+    'auth_token'
 ]
 
 MIDDLEWARE = [
