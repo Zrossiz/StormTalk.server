@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'message',
     'post',
     'user',
-    'socketio_app'
 ]
 
 MIDDLEWARE = [
