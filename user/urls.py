@@ -3,5 +3,5 @@ from .views import UserAPIView
 
 
 urlpatterns = [
-    path('/auth/registration', UserAPIView.as_view())
+    path('auth/registration', UserAPIView.as_view())
 ]

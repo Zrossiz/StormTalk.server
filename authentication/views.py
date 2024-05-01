@@ -1,15 +1,15 @@
-from django.shortcuts import render
-from rest_framework_simplejwt.tokens import RefreshToken
+from StormTalk.settings import SECRET_KEY
+import jwt
 
-# Create your views here.
 class AuthenticationView:
 
     def get_tokens(self, user):
-        refresh = RefreshToken.for_user(user) # Создание Refesh и Access
+        payload = {
+            'id': user.id,
+            'name': user.username,
+            'email': user.email
+        }
 
-        refresh.payload.update({    # Полезная информация в самом токене
-            'user_id': user.id,
-            'username': user.username
-        })
+        token = jwt.encode(payload, SECRET_KEY, 'HS256')
 
-        return refresh
+        return token
