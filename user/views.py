@@ -31,6 +31,17 @@ class RegistrationUserAPIView(APIView):
                     'message': 'email not found'
                 }, status=status.HTTP_400_BAD_REQUEST)
             
+            if User.objects.filter(username=data['username']).exists():
+                return Response({
+                    'success': False,
+                    'message': 'username already exists'
+                }, status=status.HTTP_400_BAD_REQUEST)
+
+            if User.objects.filter(email=data['email']).exists():
+                return Response({
+                    'success': False,
+                    'message': 'email already exists'
+                }, status=status.HTTP_400_BAD_REQUEST)
 
             salt = bcrypt.gensalt()
 
@@ -48,7 +59,6 @@ class RegistrationUserAPIView(APIView):
                     'token': str(token),
                     'user': serializer.data,
                 }, status=status.HTTP_201_CREATED)
-            
         except Exception as e:
             return Response({
                 'success': False,
