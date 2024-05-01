@@ -12,6 +12,7 @@ class RegistrationUserAPIView(APIView):
     def post(self, request):
         try:
             data = request.data
+
             if 'password' not in data:
                 return Response({
                     'success': False,
@@ -32,6 +33,7 @@ class RegistrationUserAPIView(APIView):
             
 
             salt = bcrypt.gensalt()
+
             data['password'] = bcrypt.hashpw(data['password'].encode('utf-8'), salt).decode('utf-8')
 
             serializer = UserSerializer(data=data)
@@ -46,6 +48,7 @@ class RegistrationUserAPIView(APIView):
                     'token': str(token),
                     'user': serializer.data,
                 }, status=status.HTTP_201_CREATED)
+            
         except Exception as e:
             return Response({
                 'success': False,
@@ -84,13 +87,10 @@ class LoginUserAPIView(APIView):
                     'token': token,
                     'user': serializer
                 }, status=status.HTTP_200_OK)
+            
         except Exception as e:
             return Response({
                 'success': False,
                 'message': str(e)
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
        
-
-
-
-
