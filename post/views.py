@@ -1,12 +1,9 @@
 from rest_framework.views import APIView
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from authentication.views import JWTAuthentication
-from .models import Post
 from .serializers import PostSerializer
-from user.serializers import UserSerializer
 
 
 class PostAPIView(APIView):
@@ -32,11 +29,10 @@ class PostAPIView(APIView):
             serializer = PostSerializer(data=create_post_data)
 
             if serializer.is_valid():
-                post = serializer.save()
-                print("Post: ", post)
+                serializer.save()
                 return Response({
                     'success': True,
-                    'data': 'success'
+                    'data': serializer.data
                 })
             else:
                 raise Exception('create post error')
