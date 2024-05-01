@@ -3,8 +3,7 @@ from user.models import User
 
 
 class Post(models.Model):
-    image = models.CharField(max_length=500)
-    title = models.CharField(max_length=200)
+    image = models.CharField(max_length=500, blank=True, null=True)
     description = models.TextField()
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
