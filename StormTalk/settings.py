@@ -26,7 +26,8 @@ INSTALLED_APPS = [
     'post',
     'user',
     'subscribe',
-    'authentication'
+    'authentication',
+    'auth_token'
 ]
 
 MIDDLEWARE = [
