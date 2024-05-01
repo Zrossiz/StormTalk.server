@@ -6,5 +6,8 @@ class User(models.Model):
     email = models.EmailField(max_length=100, unique=True)
     is_active = models.BooleanField(default=False)
 
+    def is_authenticated(self):
+        return True
+
     class Meta:
         db_table = 'user'
