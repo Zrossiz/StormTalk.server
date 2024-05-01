@@ -3,7 +3,7 @@ import jwt
 
 class AuthenticationView:
 
-    def get_tokens(self, user):
+    def get_token(self, user):
         payload = {
             'id': user.id,
             'name': user.username,
