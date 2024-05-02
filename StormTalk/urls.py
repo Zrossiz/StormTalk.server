@@ -23,5 +23,5 @@ urlpatterns = [
     path('api/user/', include('user.urls')),
     path('api/post/', include('post.urls')),
     path('api/subscribe/', include('subscribe.urls')),
-    path('api/news', include('news.urls'))
+    path('api/news/', include('news.urls'))
 ]
