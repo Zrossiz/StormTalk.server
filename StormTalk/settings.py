@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'user',
     'subscribe',
     'authentication',
+    'news',
 ]
 
 MIDDLEWARE = [
