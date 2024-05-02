@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'subscribe',
     'authentication',
     'news',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
