@@ -41,5 +41,6 @@ urlpatterns = [
     path('api/post/', include('post.urls')),
     path('api/subscribe/', include('subscribe.urls')),
     path('api/news/', include('news.urls')),
+    path('api/chat', include('chat.urls')),
     path('api/swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui')
 ]
