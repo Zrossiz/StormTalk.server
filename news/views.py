@@ -29,10 +29,16 @@ class NewsAPIView(APIView):
             all_posts_by_authors = Post.objects.filter(user__in=author_ids_arr)
             posts_serializer = PostSerializer(all_posts_by_authors, many=True).data
 
-            return Response({
-                'success': True,
-                'data': posts_serializer
-            })
+            if len(posts_serializer) == 0:
+                return Response({
+                    'success': True,
+                    'data': 'not found'
+                }, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                return Response({
+                    'success': True,
+                    'data': posts_serializer
+                }, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({
                 'success': False,
