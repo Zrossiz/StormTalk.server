@@ -1,15 +1,19 @@
 from django.db import models
 from user.models import User
-import uuid
+from message.models import Message
 
 class Chat(models.Model):
-    initiator = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="initiator_chat"
+    first_user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="first_user"
     )
-    acceptor = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="acceptor_name"
+    second_user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="second_user"
     )
-    short_id = models.CharField(max_length=255, default=uuid.uuid4, unique=True)
+    last_message = models.ForeignKey(
+        Message, on_delete=models.CASCADE, related_name="last_message"
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         db_table = 'chat'
