@@ -14,6 +14,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -22,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_yasg',
+    'channels',
     'chat',
     'message',
     'post',
@@ -71,8 +73,14 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'StormTalk.wsgi.application'
+#WSGI_APPLICATION = 'StormTalk.wsgi.application'
+ASGI_APPLICATION = 'StormTalk.asgi.application'
 
+CHANNELS_LAYERS = {
+  'default': {
+    'BACKEND': 'channels.layers.InMemoryChannelLayer'
+  }
+}
 
 
 DATABASES = {
