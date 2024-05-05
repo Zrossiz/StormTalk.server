@@ -26,7 +26,7 @@ class NewsAPIView(APIView):
             for author_data in authors_serializer:
                 author_ids_arr.append(author_data["author"])
 
-            all_posts_by_authors = Post.objects.filter(user__in=author_ids_arr)
+            all_posts_by_authors = Post.objects.filter(user__in=author_ids_arr).order_by('created_at')
             posts_serializer = PostSerializer(all_posts_by_authors, many=True).data
 
             if len(posts_serializer) == 0:
