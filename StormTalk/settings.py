@@ -76,10 +76,10 @@ TEMPLATES = [
 #WSGI_APPLICATION = 'StormTalk.wsgi.application'
 ASGI_APPLICATION = 'StormTalk.asgi.application'
 
-CHANNELS_LAYERS = {
-  'default': {
-    'BACKEND': 'channels.layers.InMemoryChannelLayer'
-  }
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
 }
 
 
