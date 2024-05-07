@@ -55,7 +55,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-ROOT_URLCONF = 'StormTalk.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
@@ -73,8 +73,8 @@ TEMPLATES = [
     },
 ]
 
-#WSGI_APPLICATION = 'StormTalk.wsgi.application'
-ASGI_APPLICATION = 'StormTalk.asgi.application'
+#WSGI_APPLICATION = 'core.wsgi.application'
+ASGI_APPLICATION = 'core.asgi.application'
 
 CHANNEL_LAYERS = {
     'default': {

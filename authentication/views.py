@@ -1,7 +1,7 @@
 import jwt
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.exceptions import AuthenticationFailed
-from StormTalk.settings import SECRET_KEY
+from core.settings import SECRET_KEY
 from user.models import User
 import datetime
 

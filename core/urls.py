@@ -7,9 +7,9 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="StormTalk",
+      title="core",
       default_version='v1',
-      description="API docs for StormTalk server",
+      description="API docs for core server",
    ),
    public=True,
    permission_classes=(permissions.AllowAny,),

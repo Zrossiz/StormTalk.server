@@ -15,11 +15,9 @@ class CreateChatAPIView(APIView):
     def post(self, request):
         try:
             data = request.data
-            print(data)
             first_user = User.objects.get(pk=int(data['user'].id))
             second_user = User.objects.get(pk=int(data['to_user']))
             
-
             new_chat = Chat.objects.create(first_user=first_user, second_user=second_user)
 
             serializer = ChatSerializer(new_chat).data
