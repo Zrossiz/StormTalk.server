@@ -8,7 +8,7 @@ class Chat(models.Model):
     second_user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="second_user"
     )
-    last_message = models.TextField(max_length=2500)
+    last_message = models.TextField(max_length=2500, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
