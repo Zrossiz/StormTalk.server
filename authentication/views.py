@@ -23,13 +23,13 @@ class AuthenticationView:
 
 class JWTAuthentication(BaseAuthentication):
     def authenticate(self, request):
-        token = str(request.headers.get('Authorization')).split(' ')[1]
+        token = request.headers.get('Authorization')
 
         if not token:
             return None
 
         try:
-            payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
+            payload = jwt.decode(str(token).split(' ')[1], SECRET_KEY, algorithms=['HS256'])
             user_id = payload['id']
             user = User.objects.get(pk=user_id)
             request.data['user'] = user
