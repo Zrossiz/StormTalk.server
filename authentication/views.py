@@ -23,7 +23,7 @@ class AuthenticationView:
 
 class JWTAuthentication(BaseAuthentication):
     def authenticate(self, request):
-        token = request.headers.get('Authorization')
+        token = str(request.headers.get('Authorization')).split(' ')[1]
 
         if not token:
             return None
