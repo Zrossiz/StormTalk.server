@@ -31,3 +31,31 @@ class CreateChatAPIView(APIView):
                 'success': False,
                 'message': str(e)
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class UpdateChatAPIView(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, chat_id):
+        try:
+            try:
+                chat = Chat.objects.get(pk=chat_id)
+            except Exception as e:
+                return Response({
+                    'success': False,
+                    'data': 'not found'
+                }, status=status.HTTP_404_NOT_FOUND)
+            serializer = ChatSerializer(chat).data
+            if serializer:
+                chat.delete()
+                return Response({
+                    'success': True,
+                    'data': serializer
+                }, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            return Response({
+                'success': False,
+                'message': str(e)
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
